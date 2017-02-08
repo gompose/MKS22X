@@ -5,16 +5,17 @@ public class Recursion {
   return "Mei, Peter";
  }
  public static double sqrt(double n){
-   _guess = helper(n, i);
+   _guess = helper(n, _guess);
    if (_guess * _guess >= n + accuracy || _guess * _guess <= n - accuracy){
-     double(n);
+     sqrt(n);
    } else{
-     return guess;
+     return _guess;
    }
+    return _guess;
  }
  
  public static double helper(double n, double guess) {
-   int better = n / guess;
+   double better = n / guess;
    better = better + guess;
    better = better / 2;
    return better;
