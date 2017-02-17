@@ -1,6 +1,9 @@
 public class QueenBoard{
     private int[][] board;
     private int solutionCount;
+    public static String name() {
+	return "Mei, Peter";
+    }
 
     public QueenBoard(int[][] x, int y){
 	board = x;
