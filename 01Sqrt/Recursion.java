@@ -5,6 +5,9 @@ public class Recursion {
   return "Mei, Peter";
  }
  public static double sqrt(double n){
+  if (n == 0) {
+   return 0;
+  } else {
    _guess = helper(n, _guess);
    if (_guess * _guess >= n + accuracy || _guess * _guess <= n - accuracy){
      sqrt(n);
@@ -12,6 +15,7 @@ public class Recursion {
      return _guess;
    }
     return _guess;
+  }
  }
  
  public static double helper(double n, double guess) {
