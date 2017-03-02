@@ -29,6 +29,47 @@ public class KnightBoard {
 	}
 
     private boolean solveH(int row, int col, int level){
+	try {
+	    Thread.sleep(300);
+	} catch(InterruptedException ex) {
+	    Thread.currentThread().interrupt();
+	}
+	removeGreater(level);
+	if (!(inBounds(row, col))) {
+	    return false;
+	}
+	if (board[row][col] != 0) {
+	    return false;
+	}
+	addKnight(row, col, level);
+	if (solved()) {
+	    return true;
+	}
+	if (
+	    !(solveH(options[0][0] + row, options[0][1] + col, level + 1) 
+	    || solveH(options[1][0] + row, options[1][1] + col, level + 1)
+	    || solveH(options[2][0] + row, options[2][1] + col, level + 1)
+	    || solveH(options[3][0] + row, options[3][1] + col, level + 1)
+	    || solveH(options[4][0] + row, options[4][1] + col, level + 1)
+	    || solveH(options[5][0] + row, options[5][1] + col, level + 1)
+	    || solveH(options[6][0] + row, options[6][1] + col, level + 1)
+	    || solveH(options[7][0] + row, options[7][1] + col, level + 1)
+	      )) {
+	    removeKnight(row, col);
+		}
+	return solveH(options[0][0] + row, options[0][1] + col, level + 1) 
+	    || solveH(options[1][0] + row, options[1][1] + col, level + 1)
+	    || solveH(options[2][0] + row, options[2][1] + col, level + 1)
+	    || solveH(options[3][0] + row, options[3][1] + col, level + 1)
+	    || solveH(options[4][0] + row, options[4][1] + col, level + 1)
+	    || solveH(options[5][0] + row, options[5][1] + col, level + 1)
+	    || solveH(options[6][0] + row, options[6][1] + col, level + 1)
+	    || solveH(options[7][0] + row, options[7][1] + col, level + 1);
+    
+
+	
+	
+	/*
 	removeGreater(level);
 	int i = recalculateMoves(row, col);
 	while (i > recalculateMoves(row, col)){
@@ -104,7 +145,9 @@ public class KnightBoard {
 		|| solveH(validOptionsCurrent[5][0] + row, validOptionsCurrent[5][1] + col, level + 1)
 		|| solveH(validOptionsCurrent[6][0] + row, validOptionsCurrent[6][1] + col, level + 1)
 		|| solveH(validOptionsCurrent[7][0] + row, validOptionsCurrent[7][1] + col, level + 1);
-	}
+
+	*/
+	
     }
     
     
@@ -152,6 +195,17 @@ public class KnightBoard {
 	boolean colbound = options[option][1] + col >= 0 && options[option][1] + col <= board[row].length - 1;
 	bounded = rowbound && colbound;
 	return bounded;
+    }
+    private boolean inBounds(int row, int col) {
+	if (row >= 0 && row <= board.length - 1){
+	    if (col >= 0 && col <= board[row].length - 1) {
+		return true;
+	    } else {
+		return false;
+	    }
+	} else {
+	    return false;
+	}
     }
 
     private int recalculateMoves(int row, int col) {
