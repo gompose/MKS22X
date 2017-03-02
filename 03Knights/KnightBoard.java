@@ -41,7 +41,7 @@ public class KnightBoard {
 	*/
 	addKnight(row, col, level);
 	recalculateMoves(row, col);
-	if (validOptions[0][0] == 0) {
+	if (validOptions[0][0] == 0 && (!(solved()))) {
 	    removeKnight(row, col);
 	    return false;
 	}
