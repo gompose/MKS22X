@@ -1,0 +1,7 @@
+Wants cows to build a lake:
+
+2d array <= 3x3 but >= 100x100
+
+each box in 2d array represents a 6x6 foot square
+
+
