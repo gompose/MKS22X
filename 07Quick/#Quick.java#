@@ -3,10 +3,8 @@ import java.util.*;
 public class Quick{
 
     public static int part (int[] data, int start, int end){
-	//My scanPart3 does the dutch flag thing, so I'm not sure where
-	//the index ends up at the end. Need to see CS Senpais for this.
-
-	//ScanPart3(Arrays.copyOfRange(data, start, end), data[randomWithRange(start, end)];
+	int[] parted = scanPart3(Arrays.copyToRange(data, start, end), randomWithRange(start, end));
+	paste(data, parted, start);
 	return 1;
 	
     }
