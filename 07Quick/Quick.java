@@ -1,7 +1,20 @@
 import java.util.*;
 
 public class Quick{
+    
+    //public static void quickSort(int[]data);
+    //public static int quickSelect(int[] data, int index);
+    public static void swap (int[] data, int index1, int index2) {
+	int hold = data[index1];
+	data[index1] = data[index2];
+	data[index2] = hold;
+    }
+    public static int part (int data, int start, int end){
+	int min = 0;
+	int max = start - end;
+	int gt = min
 
+    /*
     // public static int[] quickSort(int[]data]);
     public static int quickSelect(int[] data, int index) {
 	PartitionPair holder = part(data, 0, data.length - 1);
@@ -73,7 +86,7 @@ public class Quick{
 	
 	/*System.out.println("low: " + low);
 	System.out.println("high: " + high);
-	*/
+	
 	
 	for (int index2 = low; index2 <= high; index2++) {
 	    newArray[index2] = mid;
@@ -91,12 +104,14 @@ public class Quick{
 	data[index2] = hold;
 	// Swaps elements in a given array
     }
+    */
     private static int randomWithRange(int min, int max){
 	int range = (max - min) + 1;
 	return (int)(Math.random() * range) + min;
 	//Returns a random number inbetween min and max (inclusive)
 	//Source: http://stackoverflow.com/questions/7961788/math-random-explained
     }
+	/*
     public static int[] paste(int[] mainArray, int[] subArray, int n){
 	int index = 0;
 	int i = n;
@@ -113,7 +128,7 @@ public class Quick{
 	/*
 	int[] test = {6,3,99,40, 9, 2, 5, 8, 3, 19, 20, 39, 91, 9, 9, 9, 9};
 	System.out.println(Arrays.toString(scanPart3(test, 4)));
-	*/
+	
 	int[] arry1 = {5, 5, 5, 5, 5, 5, 5, 5};
 	int[] arry2 = {10, 10, 10};
 	int[] arry3 = {0, 3, 2, 5, 7, 8, 3, 4, 6, 2, 8, 9, 3, 4};
@@ -123,6 +138,8 @@ public class Quick{
 	System.out.println(quickSelect(arry4, 2));
 	
     }
-    
+    */
 }
+    
+
 	
