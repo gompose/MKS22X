@@ -10,9 +10,12 @@ public class Quick{
 	data[index2] = hold;
     }
     public static int part (int data, int start, int end){
-	int min = 0;
-	int max = start - end;
-	int gt = min
+	int min = start;
+	int max = end;
+	int gt = max;
+	int lt = min;
+	int mid = min;
+	
 
     /*
     // public static int[] quickSort(int[]data]);
