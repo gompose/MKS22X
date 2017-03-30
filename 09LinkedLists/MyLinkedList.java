@@ -1,6 +1,13 @@
 public class MyLinkedList {
-
-
+    private LNode start;
+    private int size;
+    
+    public MyLinkedList() {
+	start = new LNode(0);
+	size = 0;
+    }
+    public boolean add (int value) {
+	
 
     private class LNode {
 	private int value;
