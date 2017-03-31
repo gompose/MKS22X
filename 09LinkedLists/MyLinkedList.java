@@ -7,6 +7,14 @@ public class MyLinkedList {
 	size = 0;
     }
     public boolean add (int value) {
+	int index = 0;
+	LNode reader = start;
+	while (index < size) {
+	    reader = reader.next;
+	    index++;
+	}
+	reader.next = new LNode(value);
+    }
 	
 
     private class LNode {
