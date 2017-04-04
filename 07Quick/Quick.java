@@ -9,13 +9,24 @@ public class Quick{
 	data[index1] = data[index2];
 	data[index2] = hold;
     }
-    public static int part (int data, int start, int end){
-	int min = start;
-	int max = end;
-	int gt = max;
-	int lt = min;
-	int mid = min;
-	
+    public static int[]  part (int[] data, int start, int end){
+	swap(data, start, randomWithRange(start, end));
+	int gt = end;
+	int lt = start+1;
+	for(int x = start + 1; x < gt; x++){
+	    if(data[x] < data[start]){
+		swap(data, x, lt);
+		lt++;
+	    } else if (data[x] > data[start]){
+		swap(data, x, gt);
+		gt--;
+	    }
+	}
+	lt--;
+	swap(data, start, lt);
+	int[] result = {lt, gt};
+	return result;
+    }
 
     /*
     // public static int[] quickSort(int[]data]);
@@ -127,21 +138,23 @@ public class Quick{
 	//Pastes subArray on top of mainArray, beginning at index n
 	//and returns the new pasted array
     }
+	*/
     public static void main(String[] args) {
-	/*
-	int[] test = {6,3,99,40, 9, 2, 5, 8, 3, 19, 20, 39, 91, 9, 9, 9, 9};
-	System.out.println(Arrays.toString(scanPart3(test, 4)));
 	
-	int[] arry1 = {5, 5, 5, 5, 5, 5, 5, 5};
-	int[] arry2 = {10, 10, 10};
+	//int[] test = {6,3,99,40, 9, 2, 5, 8, 3, 19, 20, 39, 91, 9, 9, 9, 9};
+	//System.out.println(Arrays.toString(scanPart3(test, 4)));
+	
+	//int[] arry1 = {5, 5, 5, 5, 5, 5, 5, 5};
+	//int[] arry2 = {10, 10, 10};
 	int[] arry3 = {0, 3, 2, 5, 7, 8, 3, 4, 6, 2, 8, 9, 3, 4};
-	int[] arry4 = {0, 1, 2, 3, 4, 5, 6};
-	//System.out.println(Arrays.toString(paste(arry1, arry2, 1)));
+	//int[] arry4 = {0, 1, 2, 3, 4, 5, 6};
+        System.out.println(Arrays.toString(part(arry3, 0 , arry3.length-1)));
+	System.out.println(Arrays.toString(arry3));
 
-	System.out.println(quickSelect(arry4, 2));
+	//System.out.println(quickSelect(arry4, 2));
 	
     }
-    */
+    
 }
     
 
