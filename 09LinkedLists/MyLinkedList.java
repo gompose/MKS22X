@@ -1,3 +1,5 @@
+import java.lang.*;
+
 public class MyLinkedList {
     private LNode start, end;
     private int size;
@@ -17,12 +19,17 @@ public class MyLinkedList {
 	} else {
 	    end.next = new LNode(value);
 	    end.next.prev = end;
+	    end.next.next = null;
 	    end = end.next;
 	    size++;
 	}
     }
     public void add (int value, int index) {
-	if (index >= size) {
+	LNode holder;
+	if (index > size || index < 0) {
+	    throw new IllegalArgumentException("Illegal Index: " + index);
+	}
+        if (index == size) {
 	    add(value);
 	} 
 	if (index == 0) {
@@ -35,8 +42,9 @@ public class MyLinkedList {
 	    for(int x = 0; x < index; x++){
 		current = current.next;
 	    }
-	    current.next.prev = new LNode(value, current.next, )
-		
+	    holder = current.next;
+	    current.next = new LNode(value, current, holder);
+	       
     
     /*
     public boolean add (int value) {
@@ -63,16 +71,17 @@ public class MyLinkedList {
 	}
 	public LNode (int _value) {
 	    value = _value;
-	    next = null;
-	    prev = null;
 	}
-	public LNode (LNode nextNode) {
-	    value = 0;
-	    next = nextNode;
-	}
-	public LNode () {
-	    value = 0;
-	    next = null;
+        public LNode (int _value, LNode _node, int position) {
+	    value = _value;
+	    if (position != -1 || position != 1) {
+		throw new IllegalArgumentException("Invalid Index");
+	    }
+	    if (position == 1) {
+		LNode.next = _node;
+	    } else {
+		LNode.prev = _node;
+	    }
 	}
     }
 }
