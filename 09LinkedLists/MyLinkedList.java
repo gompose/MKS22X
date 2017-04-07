@@ -44,6 +44,20 @@ public class MyLinkedList {
 	    }
 	    holder = current.next;
 	    current.next = new LNode(value, current, holder);
+	    holder.prev = current.next;
+	}
+    }
+
+    public String toString() {
+	int index = 0;
+	LNode current = start;
+	String newString = "[";
+	while (current.next != null) {
+	    newString = newString + "(" + current.prev.value + ")";
+	    newString = newString + current.value;
+	    newString = newString + 
+
+	    
 	       
     
     /*
