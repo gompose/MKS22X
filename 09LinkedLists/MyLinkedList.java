@@ -12,9 +12,13 @@ public class MyLinkedList {
 	end = first;
 	size = 1;
     }
+    public int size () {
+	return size;
+    }
     public void add (int value) {
-	if (size = 0) {
+	if (size == 0) {
 	    start = new LNode(value);
+	    end = start;
 	    size++;
 	} else {
 	    end.next = new LNode(value);
@@ -29,8 +33,9 @@ public class MyLinkedList {
 	if (index > size || index < 0) {
 	    throw new IllegalArgumentException("Illegal Index: " + index);
 	}
-        if (index == size) {
+        if (index == size - 1) {
 	    add(value);
+	    end = end.next;
 	} 
 	if (index == 0) {
 	    start.prev = new LNode(value);
@@ -53,9 +58,35 @@ public class MyLinkedList {
 	LNode current = start;
 	String newString = "[";
 	while (current.next != null) {
-	    newString = newString + "(" + current.prev.value + ")";
+	    if (current.prev == null) {
+		newString = newString + "(null)";
+	    } else {
+		newString = newString + "(" + current.prev.value + ")";
+	    }
 	    newString = newString + current.value;
-	    newString = newString + 
+	    if (current.next == null) {
+		newString = newString + "(null),";
+	    } else {
+		newString = newString + "(" + current.next.value + "),";
+	    }
+	    current = current.next;
+	}
+	 if (current.prev == null) {
+		newString = newString + "(null)";
+	    } else {
+		newString = newString + "(" + current.prev.value + ")";
+	    }
+	    newString = newString + current.value;
+	    if (current.next == null) {
+		newString = newString + "(null),";
+	    } else {
+		newString = newString + "(" + current.next.value + "),";
+	    }
+	    current = current.next;
+	newString += "]";
+	newString = newString + "\n" + "Size: " + size;
+	return newString;
+    }
 
 	    
 	       
@@ -86,7 +117,7 @@ public class MyLinkedList {
 	public LNode (int _value) {
 	    value = _value;
 	}
-        public LNode (int _value, LNode _node, int position) {
+        /*public LNode (int _value, LNode _node, int position) {
 	    value = _value;
 	    if (position != -1 || position != 1) {
 		throw new IllegalArgumentException("Invalid Index");
@@ -97,5 +128,6 @@ public class MyLinkedList {
 		LNode.prev = _node;
 	    }
 	}
+	*/
     }
 }
