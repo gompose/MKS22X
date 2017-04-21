@@ -1,6 +1,6 @@
 import java.lang.*;
 
-public class MyLinkedList {
+public class MyLinkedList implements Iterator<Integer>{
     // Implement iterable up here ^
     private LNode start, end;
     private int size;
@@ -14,11 +14,11 @@ public class MyLinkedList {
 	size = 1;
     }
 
-    /*
-      public Iterator iterator(){
-	return MLLIterator;
+    
+    public Iterator<Integer> iterator(){
+	return new MLLIterator();
     }
-    */
+    
     
     public int size () {
 	return size;
@@ -244,10 +244,28 @@ public class MyLinkedList {
 	}
     */
 
-    //------------------
-    //private class MLLIterator implements Iterator<E> {
-    //
-    //}
+    
+    private class MLLIterator implements Iterator<Integer> {
+	private LNode current = start;
+	public boolean hasNext() {
+	    return current.next != null;
+	}
+	public Integer next() {
+	    if (hasNext()) {
+		Integer holder;
+		holder = current.value;
+		current = current.next;
+		return holder;
+	    } else {
+		throw new NoSuchElementException();
+	    }
+	}
+	
+	public void remove() {
+	    throw new UnsupportedOperationException();
+	}
+    
+    }
    
 
     private class LNode {
