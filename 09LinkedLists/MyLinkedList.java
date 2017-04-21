@@ -1,6 +1,7 @@
 import java.lang.*;
+import java.util.*;
 
-public class MyLinkedList implements Iterator<Integer>{
+public class MyLinkedList implements Iterable<Integer>{
     // Implement iterable up here ^
     private LNode start, end;
     private int size;
