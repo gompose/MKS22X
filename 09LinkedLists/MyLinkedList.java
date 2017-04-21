@@ -1,6 +1,6 @@
 import java.lang.*;
 
-public class MyLinkedList {
+public class MyLinkedList implements Iterable {
     private LNode start, end;
     private int size;
     
@@ -12,6 +12,13 @@ public class MyLinkedList {
 	end = first;
 	size = 1;
     }
+
+    /*
+      public Iterator iterator(){
+	return MLLIterator;
+    }
+    */
+    
     public int size () {
 	return size;
     }
@@ -233,9 +240,14 @@ public class MyLinkedList {
 	    index++;
 	}
 	reader.next = new LNode(value);
-    }
+	}
     */
-	
+
+    //------------------
+    //private class MLLIterator implements Iterator<E> {
+    //
+    //}
+   
 
     private class LNode {
 	private int value;
