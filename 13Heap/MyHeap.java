@@ -1,18 +1,23 @@
 public class MyHeap {
-    private int inverter = 1;
+    private int inverter;
     private String[] heapArray;
-    private int endIndex = 1;
+    private int endIndex;
     private int place;
 
     public MyHeap () {	
 	heapArray = new String[10];
+	inverter = -1;
+	endIndex = 1;
     }
     public MyHeap (boolean max) {
 	// if Max == true; heapArray becomes a maxHeapArray;
 	// if Max != true; heapArray becomes a minHeapArray;
 	if (!max) {
+	    inverter = 1;
+	} else {
 	    inverter = -1;
 	}
+	endIndex = 1;
 	heapArray = new String[10];
     }
     private void expand() {
@@ -32,13 +37,48 @@ public class MyHeap {
 	    expand();
 	    heapArray[endIndex] = s;
 	}
-	// Stopped here
-	while (
-	endIndex++;
-
+	heapArray[endIndex] = s;
+	pushUp();
     }
-	private void pushUp(){};
-	private void pushDown(){};
-     
+
+	
+    private boolean hasParent(int index) {
+	return index / 2 != 0;
+    }
+    
+    private boolean hasChildren(int index) {
+	return ((index * 2) + 1) <= endIndex;
+    }
+    private int selectMostChild(int index) {
+	//heapArray[index * 2].compareTo(heapArray[(index * 2) + 1]) > inverter;
+    }
+    public String remove(){}
+    public String peek() {
+	return heapArray[1];
+    }	 
+    private void pushUp(){
+	int currentIndex = endIndex;
+	while (hasParent(currentIndex)) {
+	    if (heapArray[currentIndex].compareTo( heapArray[currentIndex / 2]) >= inverter) {
+		swap(currentIndex, currentIndex/2);
+		currentIndex = currentIndex / 2;
+	    } else {
+		currentIndex = 0;
+	    }
+	}
+	endIndex++;
+    }
+    private void pushDown(){
+	int currentIndex = 1;
+	swap (1, endIndex);
+	//while (hasChildren(currentIndex)) {
+    }
+    private void swap (int index1, int index2){
+	String holder = heapArray[index1];
+	heapArray[index1] = heapArray[index2];
+	heapArray[index2] = holder;
+    }
+		
+
 	    
 }
