@@ -72,7 +72,7 @@ public class MyHeap {
     }
     private void pushDown(){
 	int currentIndex = 1;
-	swap (1, endIndex);
+	swap (1, endIndex - 1);
 	//while (hasChildren(currentIndex)) {
     }
     private void swap (int index1, int index2){
