@@ -48,13 +48,14 @@ public class MyHeap {
 	return index / 2 != 0;
     }
     
-    private boolean hasChildren(int index) {
-	return ((index * 2) + 1) <= endIndex;
-    }
     //private int selectMostChild(int index) {
 	//heapArray[index * 2].compareTo(heapArray[(index * 2) + 1]) > inverter;
     //}
-    //public String remove(){}
+    public String remove(){
+	endIndex--;
+	swap (1, endIndex);
+	pushDown(1);
+    }
     public String peek() {
 	return heapArray[1];
     }	 
@@ -70,9 +71,27 @@ public class MyHeap {
 	}
 	endIndex++;
     }
-    private void pushDown(){
-	int currentIndex = 1;
-	swap (1, endIndex);
+    private void pushDown(int current){
+	int index1 = current * 2;
+	int index2 = current * 2 + 1;
+	int hasChildren = 0;
+	if (index1 < endIndex) {
+	    hasChildren++;
+	}
+	if (index2 < endIndex) {
+	    hasChildren++;
+	}
+	if (hasChildren == 2) {
+	    //Left off here!
+	    
+	} else {
+	    if (hasChildren == 1){
+
+	    }
+	}
+    }
+	    
+	
 	//while (hasChildren(currentIndex)) {
     }
     private void swap (int index1, int index2){
