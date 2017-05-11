@@ -82,18 +82,30 @@ public class MyHeap {
 	    hasChildren++;
 	}
 	if (hasChildren == 2) {
-	    //Left off here!
-	    
-	} else {
+	    if(heapArray[index1].compareTo(heapArray[index2]) * inverter >= 0) {
+		if(heapArray[index1].compareTo(heapArray[current]) * inverter >= 0) {
+		    swap(index1, current);
+		    pushDown(index1);
+		}		    			
+	    } else {
+		int holder = index1;
+		index1 = index2;
+		index 2 = holder;
+		if(heapArray[index1].compareTo(heapArray[current]) * inverter >= 0) {
+		    swap(index1, current);
+		    pushDown(index1);
+		}
+	    }
+	}else {
 	    if (hasChildren == 1){
-
+		if(heapArray[index1].compareTo(heapArray[current]) * inverter >= 0){
+		    swap(index1, current);
+		    pushDown(index1);
+		}
 	    }
 	}
     }
 	    
-	
-	//while (hasChildren(currentIndex)) {
-    }
     private void swap (int index1, int index2){
 	String holder = heapArray[index1];
 	heapArray[index1] = heapArray[index2];
