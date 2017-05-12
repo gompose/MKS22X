@@ -52,9 +52,12 @@ public class MyHeap {
 	//heapArray[index * 2].compareTo(heapArray[(index * 2) + 1]) > inverter;
     //}
     public String remove(){
+	String holder = heapArray[1];
 	endIndex--;
 	swap (1, endIndex);
 	pushDown(1);
+	heapArray[endIndex] = null;
+	return holder;
     }
     public String peek() {
 	return heapArray[1];
@@ -90,7 +93,7 @@ public class MyHeap {
 	    } else {
 		int holder = index1;
 		index1 = index2;
-		index 2 = holder;
+		index2 = holder;
 		if(heapArray[index1].compareTo(heapArray[current]) * inverter >= 0) {
 		    swap(index1, current);
 		    pushDown(index1);
@@ -125,6 +128,9 @@ public class MyHeap {
 	heap1.add("Z");
 	System.out.println(heap1);
 	System.out.println(heap1.endIndex);
+	System.out.println(heap1.remove());
+	System.out.println(heap1.remove());
+	System.out.println(heap1);
 	
     }
 	    
