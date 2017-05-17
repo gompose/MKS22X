@@ -4,7 +4,6 @@ public class MyHeap {
     private int inverter;
     private int[] heapArray;
     public int endIndex;
-    private int place;
 
     public MyHeap () {	
 	heapArray = new int[10];
@@ -21,6 +20,9 @@ public class MyHeap {
 	}
 	endIndex = 1;
 	heapArray = new int[10];
+    }
+    public int getSize() {
+	return endIndex - 1;
     }
     private void expand() {
 	int[] holder = heapArray;
@@ -65,7 +67,7 @@ public class MyHeap {
     private void pushUp(){
 	int currentIndex = endIndex;
 	while (hasParent(currentIndex)) {
-	    if (heapArray[currentIndex] * inverter <= heapArray[currentIndex / 2]) * inverter) {
+	    if (heapArray[currentIndex] * inverter <= heapArray[currentIndex / 2] * inverter) {
 		swap(currentIndex, currentIndex/2);
 		currentIndex = currentIndex / 2;
 	    } else {
@@ -74,8 +76,6 @@ public class MyHeap {
 	}
 	endIndex++;
     }
-
-// LEFT OFF HERE
 
     private void pushDown(int current){
 	int index1 = current * 2;
@@ -88,8 +88,8 @@ public class MyHeap {
 	    hasChildren++;
 	}
 	if (hasChildren == 2) {
-	    if(heapArray[index1].compareTo(heapArray[index2]) * inverter >= 0) {
-		if(heapArray[index1].compareTo(heapArray[current]) * inverter >= 0) {
+	    if(heapArray[index1] * inverter <= heapArray[index2] * inverter) {
+		if(heapArray[index1] * inverter <= heapArray[current] * inverter) {
 		    swap(index1, current);
 		    pushDown(index1);
 		}		    			
@@ -97,14 +97,14 @@ public class MyHeap {
 		int holder = index1;
 		index1 = index2;
 		index2 = holder;
-		if(heapArray[index1].compareTo(heapArray[current]) * inverter >= 0) {
+		if(heapArray[index1] * inverter <= heapArray[current] * inverter) {
 		    swap(index1, current);
 		    pushDown(index1);
 		}
 	    }
 	}else {
 	    if (hasChildren == 1){
-		if(heapArray[index1].compareTo(heapArray[current]) * inverter >= 0){
+		if(heapArray[index1] * inverter <= heapArray[current] * inverter){
 		    swap(index1, current);
 		    pushDown(index1);
 		}
@@ -113,7 +113,7 @@ public class MyHeap {
     }
 	    
     private void swap (int index1, int index2){
-	String holder = heapArray[index1];
+	int holder = heapArray[index1];
 	heapArray[index1] = heapArray[index2];
 	heapArray[index2] = holder;
     }
@@ -121,14 +121,14 @@ public class MyHeap {
 	return Arrays.toString(heapArray);
     }
     public static void main(String[] args) {
-	MyHeap heap1 = new MyHeap(true);
-	heap1.add("Hello");
-	heap1.add("Does this Work");
-	heap1.add("A");
-	heap1.add("Y");
-	heap1.add("T");
-	heap1.add("Z");
-	heap1.add("Z");
+	MyHeap heap1 = new MyHeap(false);
+	heap1.add(1);
+	heap1.add(2);
+	heap1.add(3);
+	heap1.add(26);
+	heap1.add(90);
+	heap1.add(0);
+	heap1.add(504);
 	System.out.println(heap1);
 	System.out.println(heap1.endIndex);
 	System.out.println(heap1.remove());
