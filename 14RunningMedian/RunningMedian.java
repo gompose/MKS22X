@@ -16,7 +16,7 @@ public class RunningMedian{
 	recalculate();
     }
     private void recalculate () {
-	if (lesserThan.getSize() > greaterThan.getSize()) {
+	/*if (lesserThan.getSize() > greaterThan.getSize()) {
 
 	} else {
 	    if (lesserThan.getSize() < greaterThan.getSize()) {
@@ -26,6 +26,18 @@ public class RunningMedian{
 	    }
 	
 	}
+	*/
+	if (lesserThan.getSize() - greaterThan.getSize() >= 2 || greaterThan.getSize() - lesserThan.getSize() <= 2) {
+	    // rebalance the two heaps
+	    /*	} else {
+	    if (lesserThan.getSize() == greaterThan.getSize()) {
+	    }
+	    if (lesserThan.getSize() - greaterThan.getSize()) = 1) {
+	    }
+	if (greaterThan.getSize() - lesserThan.getSize()) = 1) {
+	    }
+}
+	    */
     }
     public double getMedian () {
 	return currentMedian;
