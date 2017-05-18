@@ -16,28 +16,25 @@ public class RunningMedian{
 	recalculate();
     }
     private void recalculate () {
-	/*if (lesserThan.getSize() > greaterThan.getSize()) {
-
-	} else {
-	    if (lesserThan.getSize() < greaterThan.getSize()) {
-		
-	    } else {
-		currentMedian = ((double)lesserThan.peek() + (double)greaterThan.peek()) / 2;
-	    }
-	
+	int currentLesser = lesserThan.getSize();
+	int currentGreater = GreaterThan.getSize();
+	if (currentLesser - currentGreater >= 2) {
+	    greaterThan.add(lesserThan.remove());
+	    recalculate();
 	}
-	*/
-	if (lesserThan.getSize() - greaterThan.getSize() >= 2 || greaterThan.getSize() - lesserThan.getSize() <= 2) {
-	    // rebalance the two heaps
-	    /*	} else {
-	    if (lesserThan.getSize() == greaterThan.getSize()) {
-	    }
-	    if (lesserThan.getSize() - greaterThan.getSize()) = 1) {
-	    }
-	if (greaterThan.getSize() - lesserThan.getSize()) = 1) {
-	    }
-}
-	    */
+	if (currentGreater - currentLesser >= 2){
+	    lesserThan.add(greaterThan.remove());
+	    recalculate();
+	}
+	if (currentGreater - currentLesser == 1){
+	    currentMedian = currentGreater.peak();
+	}
+	if (currentLesser - currentGreater == 1){
+	    currentMedian = currentLesser.peak();
+	}
+	if (currentLesser == currentGreater) {
+	    currentMedian = ((double) greaterThan.peak() + (double) lesserThan.peak()) / 2
+	}
     }
     public double getMedian () {
 	return currentMedian;
